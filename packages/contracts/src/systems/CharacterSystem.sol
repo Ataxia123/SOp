@@ -10,7 +10,9 @@ import { Players, PlayersData } from "../codegen/Tables.sol";
 
 contract CharacterSystem is System {
   function addCharacter(string memory name, string memory level) public {
+    // if token id already exists do not create again
     bytes32 id = getUniqueEntity();
+    // bytes32 owner = _msgSender(); //TODO: Fix formating for ownership
 
     Players.set(id, PlayersData({ name: name, level: level }));
   }

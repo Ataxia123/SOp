@@ -30,6 +30,7 @@ export const App = () => {
           const response = await fetch(data as string);
           const json = await response.json();
           setMetadata(json);
+          console.log(json);
         }
         fetchMetadata();
       } catch (error) {
@@ -71,8 +72,8 @@ export const App = () => {
         type="button"
         onClick={async (event) => {
           createCharacter(
-            Metadata?.name ?? ("??" as string),
-            Metadata?.description ?? ("??" as string)
+            Metadata?.name ?? "??",
+            Metadata?.attributes[1].value ?? "??"
           );
           event.preventDefault();
         }}
