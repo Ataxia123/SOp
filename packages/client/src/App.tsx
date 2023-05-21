@@ -1,8 +1,9 @@
-import { useComponentValue } from "@latticexyz/react";
+import { useComponentValue, useEntityQuery } from "@latticexyz/react";
 import { useMUD } from "./MUDContext";
 import contracts from "./contracts/AIUniverse";
 import { useContractRead } from "wagmi";
 import { useEffect, useState } from "react";
+import { Has, getComponentValueStrict } from "@latticexyz/recs";
 
 export const App = () => {
   const [Metadata, setMetadata] = useState<any>();
@@ -54,6 +55,7 @@ export const App = () => {
 
   // todo: add a button to create a new character sheet
 
+  const playerIds = useEntityQuery([Has(Players)]);
   return (
     <>
       Space Opera
@@ -63,6 +65,17 @@ export const App = () => {
       {Metadata?.name}
       {Metadata?.description}
       <br />
+      <div>
+        {[...playerIds].map((id) => {
+          const playerData = getComponentValueStrict(Players, id);
+          return (
+            <div>
+              {playerData.name}
+              {playerData.level}
+            </div>
+          );
+        })}
+      </div>
       <img style={{ width: "300px", height: "300px" }} src={url} />
       <div>
         Create Character Sheet <br /> Counter:{" "}

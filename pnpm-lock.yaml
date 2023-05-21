@@ -3,6 +3,10 @@ lockfileVersion: '6.0'
 importers:
 
   .:
+    dependencies:
+      '@latticexyz/config':
+        specifier: ^1.42.0
+        version: 1.42.0
     devDependencies:
       '@latticexyz/cli':
         specifier: 2.0.0-alpha.1.176+b2c06c9f
@@ -34,6 +38,9 @@ importers:
       '@latticexyz/common':
         specifier: 2.0.0-alpha.1.176+b2c06c9f
         version: 2.0.0-alpha.1.176(typescript@5.0.4)(zod@3.21.4)
+      '@latticexyz/config':
+        specifier: ^1.42.0
+        version: 1.42.0
       '@latticexyz/dev-tools':
         specifier: 2.0.0-alpha.1.176+b2c06c9f
         version: 2.0.0-alpha.1.176(@latticexyz/network@2.0.0-alpha.1.176)(@latticexyz/std-client@2.0.0-alpha.1.176)(@latticexyz/utils@2.0.0-alpha.1.176)(@latticexyz/world@2.0.0-alpha.1.176)(typescript@5.0.4)(zod@3.21.4)
@@ -116,6 +123,9 @@ importers:
       '@latticexyz/cli':
         specifier: 2.0.0-alpha.1.176+b2c06c9f
         version: 2.0.0-alpha.1.176(@ethersproject/bytes@5.7.0)(google-protobuf@3.21.2)
+      '@latticexyz/config':
+        specifier: 2.0.0-alpha.1.176+b2c06c9f
+        version: 2.0.0-alpha.1.176(typescript@5.0.4)
       '@latticexyz/schema-type':
         specifier: 2.0.0-alpha.1.176+b2c06c9f
         version: 2.0.0-alpha.1.176(typescript@5.0.4)(zod@3.21.4)
@@ -1074,6 +1084,21 @@ packages:
       - zod
     dev: false
 
+  /@latticexyz/config@1.42.0:
+    resolution: {integrity: sha512-C9VKh/ins8plrOuFakSXt3SbyjqY88u3mCigP5mc4onoxRs94XA1HEo1/jkJH8ectyqgDL155k9+hL7mWKOUPQ==}
+    dependencies:
+      '@latticexyz/schema-type': 1.42.0
+      chalk: 5.2.0
+      esbuild: 0.17.19
+      ethers: 6.4.0
+      find-up: 6.3.0
+      zod: 3.21.4
+      zod-validation-error: 1.3.0(zod@3.21.4)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   /@latticexyz/config@2.0.0-alpha.1.176(typescript@4.9.5):
     resolution: {integrity: sha512-1qL0yL5GFZbNzU2qpSvTtGsrBVowf1ZpGCdRP9yccDcSqqj6wTocjkHEc1chKurRz8CIiGYXGsyB+SY2Yaz0oQ==}
     dependencies:
@@ -1198,6 +1223,10 @@ packages:
       - typescript
       - utf-8-validate
       - zod
+    dev: false
+
+  /@latticexyz/schema-type@1.42.0:
+    resolution: {integrity: sha512-BMfgwtagkQYJjPTcO2WImvpQWjVHPX2/5PBclE6PdRmS5/9DZeJbvP6wFJ7+ou0czlmedI5g//FoeBAkUbLU8A==}
     dev: false
 
   /@latticexyz/schema-type@2.0.0-alpha.1.176(typescript@4.9.5)(zod@3.21.4):
@@ -1495,8 +1524,16 @@ packages:
       '@noble/hashes': 1.3.0
     dev: false
 
+  /@noble/hashes@1.1.2:
+    resolution: {integrity: sha512-KYRCASVTv6aeUi1tsF8/vpyR7zpfs3FUzy2Jqm+MU+LmUKhQ0y2FpfwqkCcxSg2ua4GALJd8k2R76WxwZGbQpA==}
+    dev: false
+
   /@noble/hashes@1.3.0:
     resolution: {integrity: sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==}
+    dev: false
+
+  /@noble/secp256k1@1.7.1:
+    resolution: {integrity: sha512-hOUk6AyBFmqVrv7k5WAw/LpszxVbj9gGN4JRkIX52fdFAj1UA61KXmZDvqVEm+pOyec3+fIeZB02LYa/pWOArw==}
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -1869,7 +1906,7 @@ packages:
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.15.11
+      '@types/node': 18.15.13
     dev: false
 
   /@types/debug@4.1.7:
@@ -1892,6 +1929,10 @@ packages:
 
   /@types/node@18.15.11:
     resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
+
+  /@types/node@18.15.13:
+    resolution: {integrity: sha512-N+0kuo9KgrUQ1Sn/ifDXsvg0TTleP7rIy4zOBGECxAljqvqfqpTfzx0Q1NUedOixRMBfe2Whhb056a42cWs26Q==}
+    dev: false
 
   /@types/prettier@2.7.2:
     resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
@@ -1929,7 +1970,7 @@ packages:
   /@types/ws@7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
-      '@types/node': 18.15.11
+      '@types/node': 18.15.13
     dev: false
 
   /@typescript-eslint/eslint-plugin@5.46.1(@typescript-eslint/parser@5.46.1)(eslint@8.29.0)(typescript@4.9.5):
@@ -2647,6 +2688,10 @@ packages:
 
   /aes-js@3.1.2:
     resolution: {integrity: sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==}
+    dev: false
+
+  /aes-js@4.0.0-beta.5:
+    resolution: {integrity: sha512-G965FqalsNyrPqgEGON7nIx1e/OVENSgiEIzyC63haUMuvNnwIgIjMs52hlTCKhkBny7A2ORNlfY9Zu+jmGk1Q==}
     dev: false
 
   /agentkeepalive@4.3.0:
@@ -3756,6 +3801,22 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  /ethers@6.4.0:
+    resolution: {integrity: sha512-nksaMCwX+BOdV2NQ1/57OehSD2JtujbhrdC2+Fb9VpvBO0WO6h+WWwu3oMMw7aUiTa5lvQcWX1vl4aOy7Q3CTg==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': github.com/ricmoo/ens-normalize.js/2d040533e57e4f25f9a7cc4715e219658ad454b5
+      '@noble/hashes': 1.1.2
+      '@noble/secp256k1': 1.7.1
+      '@types/node': 18.15.13
+      aes-js: 4.0.0-beta.5
+      tslib: 2.4.0
+      ws: 8.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
 
   /eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
@@ -6002,6 +6063,10 @@ packages:
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
+  /tslib@2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+    dev: false
+
   /tslib@2.5.2:
     resolution: {integrity: sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==}
 
@@ -6469,6 +6534,19 @@ packages:
       utf-8-validate: 5.0.10
     dev: false
 
+  /ws@8.5.0:
+    resolution: {integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
+
   /xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
@@ -6581,6 +6659,12 @@ packages:
     name: forge-std
     version: 1.2.0
     dev: true
+
+  github.com/ricmoo/ens-normalize.js/2d040533e57e4f25f9a7cc4715e219658ad454b5:
+    resolution: {tarball: https://codeload.github.com/ricmoo/ens-normalize.js/tar.gz/2d040533e57e4f25f9a7cc4715e219658ad454b5}
+    name: '@adraffy/ens-normalize'
+    version: 1.9.0
+    dev: false
 
   github.com/transmissions11/solmate/9cf1428245074e39090dceacb0c28b1f684f584c:
     resolution: {tarball: https://codeload.github.com/transmissions11/solmate/tar.gz/9cf1428245074e39090dceacb0c28b1f684f584c}

@@ -24,6 +24,7 @@
     "@ethersproject/bytes": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@latticexyz/cli": "2.0.0-alpha.1.176+b2c06c9f",
+    "@latticexyz/config": "2.0.0-alpha.1.176+b2c06c9f",
     "@latticexyz/schema-type": "2.0.0-alpha.1.176+b2c06c9f",
     "@latticexyz/std-contracts": "2.0.0-alpha.1.176+b2c06c9f",
     "@latticexyz/store": "2.0.0-alpha.1.176+b2c06c9f",
