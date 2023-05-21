@@ -8,6 +8,9 @@ export default defineConfig({
     fs: {
       strict: false,
     },
+    proxy: {
+      '/api': 'http://localhost:3000', // Proxy API requests to your Express server
+    },
   },
   build: {
     target: "es2022",
