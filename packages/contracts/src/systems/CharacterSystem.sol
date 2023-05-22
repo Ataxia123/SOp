@@ -6,7 +6,7 @@ import { getUniqueEntity } from "@latticexyz/world/src/modules/uniqueentity/getU
 
 /// # Character System
 
-import { Players, PlayersData } from "../codegen/Tables.sol";
+import { Players, PlayersData, Parsed, ParsedTableId, NonPlayer } from "../codegen/Tables.sol";
 
 contract CharacterSystem is System {
   function addCharacter(string memory name, string memory level) public {
@@ -14,6 +14,12 @@ contract CharacterSystem is System {
     bytes32 id = getUniqueEntity();
     // bytes32 owner = _msgSender(); //TODO: Fix formating for ownership
 
-    Players.set(id, PlayersData({ name: name, level: level }));
+    Players.set(id, PlayersData({ name: name, level: level}));
+       Parsed.set(id, Parsed.get(id));
   }
+  function isParsed (bytes32 playerId ) public {
+    Parsed.set(playerId, !Parsed.get(playerId));
+
+  }
+
 }

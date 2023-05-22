@@ -4,7 +4,7 @@ import { resolveTableId } from "@latticexyz/config";
 export default mudConfig({
   tables: {
     Movable: "bool",
-    Player: "bool",
+    NonPlayer: "bool",
     Position:{
       dataStruct: false,
       schema: {
@@ -12,6 +12,7 @@ export default mudConfig({
         y: "uint32",
       },
     },
+    Parsed: "bool",
     Players: {
       schema: {
         name: "string",
@@ -24,7 +25,7 @@ export default mudConfig({
     {
       name: "KeysInTableModule",
       root: true,
-      args: [resolveTableId("Player")],
+      args: [resolveTableId("NonPlayer")],
     },
     {
       name: "KeysWithValueModule",

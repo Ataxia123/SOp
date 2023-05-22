@@ -20,8 +20,8 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
-    Player: (() => {
-      const tableId = new TableId("", "Player");
+    NonPlayer: (() => {
+      const tableId = new TableId("", "NonPlayer");
       return defineComponent(
         world,
         {
@@ -42,6 +42,21 @@ export function defineContractComponents(world: World) {
         {
           x: RecsType.Number,
           y: RecsType.Number,
+        },
+        {
+          metadata: {
+            contractId: tableId.toHexString(),
+            tableId: tableId.toString(),
+          },
+        }
+      );
+    })(),
+    Parsed: (() => {
+      const tableId = new TableId("", "Parsed");
+      return defineComponent(
+        world,
+        {
+          value: RecsType.Boolean,
         },
         {
           metadata: {

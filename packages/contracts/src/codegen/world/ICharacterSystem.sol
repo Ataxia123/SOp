@@ -5,4 +5,6 @@ pragma solidity >=0.8.0;
 
 interface ICharacterSystem {
   function addCharacter(string memory name, string memory level) external;
+
+  function isParsed(bytes32 playerId) external;
 }

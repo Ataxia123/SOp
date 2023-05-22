@@ -3,14 +3,14 @@ import { useMUD } from "./MUDContext";
 import contracts from "./contracts/AIUniverse";
 import { useContractRead } from "wagmi";
 import { useEffect, useState } from "react";
-import { Has, getComponentValueStrict } from "@latticexyz/recs";
+import { Entity, Has, getComponentValueStrict } from "@latticexyz/recs";
 
 export const App = () => {
   const [Metadata, setMetadata] = useState<any>();
   const [url, setUrl] = useState<string>();
   const {
-    components: { Players },
-    systemCalls: { createCharacter },
+    components: { Players, Parsed },
+    systemCalls: { createCharacter, toggleParsed },
     network: { singletonEntity },
   } = useMUD();
 
@@ -55,7 +55,8 @@ export const App = () => {
 
   // todo: add a button to create a new character sheet
 
-  const playerIds = useEntityQuery([Has(Players)]);
+  const playerIds = useEntityQuery([Has(Players), Has(Parsed)]);
+
   return (
     <>
       Space Opera
@@ -66,14 +67,50 @@ export const App = () => {
       {Metadata?.description}
       <br />
       <div>
+        ALL THEM STATES
         {[...playerIds].map((id) => {
           const playerData = getComponentValueStrict(Players, id);
+          const parsed = getComponentValueStrict(Parsed, id);
           return (
             <div>
               {playerData.name}
-              {playerData.level}
+              {playerData.level}{" "}
+              {parsed.value === true ? "parsed" : "not parsed"}
+              <button
+                type="button"
+                onClick={async (event) => {
+                  toggleParsed(id);
+                  event.preventDefault();
+                }}
+              >
+                Toggle
+              </button>
             </div>
           );
+        })}
+        <span>NOT PARSED</span>
+        {[...playerIds].map((id) => {
+          const playerData = getComponentValueStrict(Players, id);
+          const parsed = getComponentValueStrict(Parsed, id);
+          if (parsed.value === false)
+            return (
+              <div>
+                {playerData.name}
+                {playerData.level}{" "}
+                <button
+                  type="button"
+                  onClick={async (event) => {
+                    toggleParsed(id);
+                    event.preventDefault();
+                  }}
+                >
+                  Toggle
+                </button>
+              </div>
+            );
+          else {
+            <> </>;
+          }
         })}
       </div>
       <img style={{ width: "300px", height: "300px" }} src={url} />
@@ -92,6 +129,15 @@ export const App = () => {
         }}
       >
         Increment
+      </button>
+      <button
+        type="button"
+        onClick={async (event) => {
+          toggleParsed("1");
+          event.preventDefault();
+        }}
+      >
+        Toggle
       </button>
     </>
   );
