@@ -194,5 +194,7 @@ app.listen(port, async () => {
 //   console.log(e);
 // 
 
+await GameMaster()
+
   console.log(`LangChain Express app listening at http://localhost:${port}`);
 });
