@@ -40,6 +40,7 @@
     "ts-import": "5.0.0-beta.0",
     "ts-node": "^10.9.1",
     "typeorm": "^0.3.16",
+    "wagmi": "^1.0.5",
     "wait-port": "^1.0.4"
   },
   "devDependencies": {

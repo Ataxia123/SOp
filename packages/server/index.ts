@@ -13,10 +13,12 @@ import ejs from 'ejs';
 import { methods } from './methods.js';
 import { setup } from './lib/mud/setup';
 import * as tsImport from 'ts-import';
+import GameMaster from "./logic"
 
 dotenv.config();
 
 const app = express();
+const mud = await setup()
 const port = process.env.PORT || 6001;
 
 app.use(bodyParser.json());
@@ -100,7 +102,7 @@ methods.forEach((method) => {
         try {
           const result = await execute(input)
   
-          if (result.stream) {
+          if (result?.stream) {
             res.setHeader("Content-Type", "application/ndjson")
             res.setHeader("Cache-Control", "no-cache")
             res.setHeader("Connection", "keep-alive")
@@ -169,8 +171,8 @@ methods.forEach((method) => {
   })
   
   const specs = swaggerJsdoc(options)
-  
   // Frontend
+
   app.get("/", (req, res) => {
     fs.readFile("./views/index.ejs", "utf8", (err, data) => {
       if (err) {
@@ -179,11 +181,18 @@ methods.forEach((method) => {
       }
       const html = ejs.render(data, { methods })
       res.send(html)
+
     })
   })
-
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
-app.listen(port, () => {
+app.listen(port, async () => {
+//   try {
+//     await setup();
+//   }
+// catch (e) {
+//   console.log(e);
+// 
+
   console.log(`LangChain Express app listening at http://localhost:${port}`);
 });

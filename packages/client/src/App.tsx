@@ -22,7 +22,6 @@ export const App = () => {
   });
 
   console.log(data as string);
-  const response = fetch(data as string);
 
   useEffect(() => {
     if (data) {

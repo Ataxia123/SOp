@@ -17,8 +17,8 @@ import { DataSource } from "typeorm";
 
 export const methods = [
   {
-    id: "translation",
-    route: "/translate",
+    id: "Database query",
+    route: "/query",
     method: "post",
     description: "Database query",
     inputVariables: [],
