@@ -58,7 +58,7 @@ const options = {
       },
       servers: [
         {
-          url: "http://localhost:3002",
+          url: "http://localhost:6001",
         },
       ],
       paths: {},
