@@ -18,7 +18,6 @@ import GameMaster from "./logic"
 dotenv.config();
 
 const app = express();
-const mud = await setup()
 const port = process.env.PORT || 6001;
 
 app.use(bodyParser.json());
@@ -60,12 +59,12 @@ const options = {
       },
       servers: [
         {
-          url: "http://localhost:6001",
+          url: "http://localhost:3000",
         },
       ],
       paths: {},
     },
-    apis: ["./app.ts"], // Here you should change to your ts file instead of app.js
+    apis: ["./index.ts"], // Here you should change to your ts file instead of app.js
   };
   
 
@@ -193,8 +192,8 @@ app.listen(port, async () => {
 // catch (e) {
 //   console.log(e);
 // 
+await setup();
 
-await GameMaster()
 
   console.log(`LangChain Express app listening at http://localhost:${port}`);
 });

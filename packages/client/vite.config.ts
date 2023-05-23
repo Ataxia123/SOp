@@ -9,8 +9,12 @@ export default defineConfig({
       strict: false,
     },
     proxy: {
-      '/api': 'http://localhost:3000', // Proxy API requests to your Express server
-    },
+      '/api': {
+        target: 'http://localhost:6001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+  },
   },
   build: {
     target: "es2022",

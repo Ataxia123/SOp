@@ -4,10 +4,13 @@ import contracts from "./contracts/AIUniverse";
 import { useContractRead } from "wagmi";
 import { useEffect, useState } from "react";
 import { Entity, Has, getComponentValueStrict } from "@latticexyz/recs";
+import axios from "axios";
 
 export const App = () => {
   const [Metadata, setMetadata] = useState<any>();
   const [url, setUrl] = useState<string>();
+  const [entities, setEntities] = useState<any>([]);
+  const [res, setRes] = useState<any>([]);
   const {
     components: { Players, Parsed },
     systemCalls: { createCharacter, toggleParsed },
@@ -55,13 +58,46 @@ export const App = () => {
   // todo: add a button to create a new character sheet
 
   const playerIds = useEntityQuery([Has(Players), Has(Parsed)]);
+  const toggleAllParsed = async () => {
+    for (const id of playerIds) {
+      const parsed = getComponentValueStrict(Parsed, id);
+      if (parsed.value === false) {
+        await toggleParsed(id);
+        const entities = [];
+        const playerData = getComponentValueStrict(Players, id);
+        entities.push(playerData);
+        setEntities(entities);
+      }
+    }
+    // Now, send the entities array to your server using a POST request.
+    // Replace 'http://your-server.com/api-endpoint' with your actual API endpoint.
+    async function getChainOutput() {
+      try {
+        const response = await axios.post("http://localhost:3000/api/query", {
+          ActiveEntities: JSON.stringify(entities),
+        });
 
+        console.log(response, "restinpieces");
+        setRes(response); // Logs the response from the server
+
+        console.log(res, "res");
+      } catch (error) {
+        console.error("Error fetching scanning report:", error);
+      }
+      console.log(res, "res");
+    }
+
+    getChainOutput();
+  };
+  console.log(res, "res.data");
   return (
     <>
       Space Opera
       <br />
       Connect your AI-Universe Character to the Game State <br />
       // Read AIU Character
+      <br />
+      <br />
       {Metadata?.name}
       {Metadata?.description}
       <br />
@@ -121,8 +157,8 @@ export const App = () => {
         type="button"
         onClick={async (event) => {
           createCharacter(
-            Metadata?.name ?? "??",
-            Metadata?.attributes[1].value ?? "??"
+            Metadata?.attributes[1].value ?? "??",
+            Metadata?.attributes[2].value ?? "??"
           );
           event.preventDefault();
         }}
@@ -132,7 +168,7 @@ export const App = () => {
       <button
         type="button"
         onClick={async (event) => {
-          toggleParsed("1");
+          toggleAllParsed();
           event.preventDefault();
         }}
       >

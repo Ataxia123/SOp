@@ -73,7 +73,7 @@ export async function setupNetwork() {
 
   // Create a fast tx executor
   const fastTxExecutor =
-    signer?.provider instanceof JsonRpcProvider
+    signer?.provider
       ? await createFastTxExecutor(signer as Signer & { provider: JsonRpcProvider })
       : null;
 
